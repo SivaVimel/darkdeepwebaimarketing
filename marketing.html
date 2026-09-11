@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DarkDeepWeb — the web through Tor, read by an AI that never leaves your phone</title>
+<meta name="description" content="A browser that reaches the web only through the Tor network, with an AI built in that runs entirely on your device. Search, browse onion services, and ask any page a question.">
+<meta property="og:title" content="DarkDeepWeb — AI Browser">
+<meta property="og:description" content="Search through Tor. Understand it on device.">
+<style>
+  :root{
+    --bg:#1C1B22; --surface:#2B2A33; --elev:#36353F; --stroke:#42414D;
+    --text:#FBFBFE; --text2:#B6B3C2; --text3:#8A8796;
+    --accent:#A87BE0; --accent2:#7D4698; --ok:#7FC240;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#FFFFFF; --surface:#F6F3FA; --elev:#FFFFFF; --stroke:#E5E0EE;
+      --text:#1C1B22; --text2:#554E68; --text3:#857F94;
+      --accent:#7D4698; --accent2:#59316B; --ok:#4E8B22;
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+  .grad{background:linear-gradient(135deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+
+  header{padding:26px 0}
+  .mark{font-weight:800;font-size:15px;letter-spacing:-.2px}
+
+  .hero{padding:64px 0 72px;text-align:center}
+  .hero h1{font-size:clamp(38px,7vw,68px);line-height:1.03;letter-spacing:-2px;
+    margin:0 0 18px;font-weight:800}
+  .hero p{font-size:clamp(17px,2.4vw,21px);color:var(--text2);max-width:640px;
+    margin:0 auto 30px}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .pill{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;
+    color:var(--text2);background:var(--surface);border:1px solid var(--stroke);
+    border-radius:999px;padding:8px 14px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+
+  section{padding:56px 0;border-top:1px solid var(--stroke)}
+  h2{font-size:clamp(24px,3.4vw,34px);letter-spacing:-.9px;margin:0 0 12px;font-weight:800}
+  .sub{color:var(--text2);max-width:660px;margin:0 0 34px;font-size:17px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .card{background:var(--surface);border:1px solid var(--stroke);border-radius:18px;padding:22px}
+  .card h3{margin:0 0 8px;font-size:17px;font-weight:700;letter-spacing:-.2px}
+  .card p{margin:0;color:var(--text2);font-size:15px}
+  .ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+    margin-bottom:14px;font-size:18px;line-height:1;color:var(--accent);
+    background:color-mix(in srgb,var(--accent) 13%,transparent);
+    border:1px solid color-mix(in srgb,var(--accent) 26%,transparent)}
+
+  .steps{counter-reset:s;display:grid;gap:14px;max-width:720px}
+  .step{display:flex;gap:14px;align-items:flex-start}
+  .num{counter-increment:s;flex:0 0 28px;height:28px;border-radius:50%;
+    display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  .num::before{content:counter(s)}
+  .step p{margin:0;color:var(--text2)}
+  .step strong{color:var(--text)}
+
+  .quote{background:var(--surface);border:1px solid var(--stroke);border-left:3px solid var(--accent);
+    border-radius:16px;padding:22px 24px;margin:0;font-size:17px;color:var(--text2)}
+  .quote strong{color:var(--text)}
+
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  td{padding:12px 0;border-bottom:1px solid var(--stroke);color:var(--text2);vertical-align:top}
+  td:first-child{color:var(--text);font-weight:600;width:42%}
+
+  footer{padding:46px 0 72px;color:var(--text3);font-size:13.5px;border-top:1px solid var(--stroke)}
+  footer a{color:var(--accent);text-decoration:none}
+  .foot-links{margin:0 0 16px;display:flex;gap:18px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header><div class="mark">Dark<span class="grad">Deep</span>Web</div></header>
+
+  <div class="hero">
+    <h1>The web through Tor,<br>read by an AI that never leaves your phone.</h1>
+    <p>Every page and every search travels through three relays. Everything that reads them runs on the device. Two halves of the same promise: nobody learns where you went, and nobody learns what you read.</p>
+    <div class="badges">
+      <span class="pill"><span class="dot"></span> Routed through Tor</span>
+      <span class="pill"><span class="dot"></span> No account</span>
+      <span class="pill"><span class="dot"></span> No tracking</span>
+      <span class="pill"><span class="dot"></span> Reaches .onion sites</span>
+      <span class="pill"><span class="dot"></span> Model included</span>
+    </div>
+  </div>
+
+  <section>
+    <h2>Tor, properly — not a proxy bolted on the side</h2>
+    <p class="sub">A Tor daemon runs inside the app and the browser engine itself speaks to it. Pages, searches, scripts, images, even site icons go the same way. Nothing loads until the connection is up, and nothing quietly falls back to your ordinary connection if it drops.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ico">◎</div>
+        <h3>See your own route</h3>
+        <p>Guard, middle and exit for every live circuit, with the countries they sit in. The first relay knows your device but not your destination; the last knows the destination but not you.</p>
+      </div>
+      <div class="card">
+        <div class="ico">⟳</div>
+        <h3>New circuit, new identity</h3>
+        <p>A new circuit changes the route and keeps your session. A new identity throws away the route, the cookies, the caches, the history and the log in one step.</p>
+      </div>
+      <div class="card">
+        <div class="ico">◈</div>
+        <h3>Onion services, first class</h3>
+        <p>Reach <code>.onion</code> addresses directly, with an onion badge in the address bar instead of a padlock — because there is no exit relay in the path at all.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Search that actually answers a Tor user</h2>
+    <p class="sub">Most engines meet a Tor exit relay with a CAPTCHA. This one ships with the ones that do not: DuckDuckGo, DuckDuckGo's own onion service, and Ahmia — the index of onion services, which is how you find a <code>.onion</code> in the first place. <strong>Onion Search</strong> asks the last two together and merges them, so a search stays inside the Tor network end to end and still comes back with something when the onion web has nothing. Add your own if you prefer, clearnet or onion.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ico">▤</div>
+        <h3>Results first, always</h3>
+        <p>Results appear the moment an engine answers. The summary fills in beneath them — it never makes you wait, and you can stop it at any time.</p>
+      </div>
+      <div class="card">
+        <div class="ico">✦</div>
+        <h3>An overview you can check</h3>
+        <p>A short summary of what the results actually say, written on your phone, with the pages it drew on listed underneath. Tap any of them to read the source yourself.</p>
+      </div>
+      <div class="card">
+        <div class="ico">◐</div>
+        <h3>Three security levels</h3>
+        <p>Standard, Safer and Safest, with HTTPS-Only on by default and per-site exceptions you can see and revoke. The screen says exactly what each level changes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ask the page anything</h2>
+    <p class="sub">Open any site and tap the orb. Before you have typed a word, the browser has read the page — the publisher's own text, and what is on your screen right now.</p>
+    <div class="steps">
+      <div class="step"><div class="num"></div><p><strong>It reads the page.</strong> Headings, article text, author and date — whatever the site publishes.</p></div>
+      <div class="step"><div class="num"></div><p><strong>It looks at the screen.</strong> Text inside images, charts and photos, recognised on your device with Apple's Vision framework.</p></div>
+      <div class="step"><div class="num"></div><p><strong>You just ask.</strong> Summarise it, pull out the key points, explain it simply, or question what it claims.</p></div>
+    </div>
+    <p style="margin-top:26px"><span class="pill"><span class="dot"></span> Screenshots are analysed on device and never stored or uploaded</span></p>
+  </section>
+
+  <section>
+    <h2>The AI is the part that stays home</h2>
+    <p class="sub">The language model ships inside the app. There is no first-run download, no server of ours, and no account. A summary of what you just searched for is written on the phone that searched for it — which is the only version of this feature that belongs in a browser like this one.</p>
+    <p class="quote"><strong>Bring your own model instead, if you prefer.</strong> Connect Gemini, ChatGPT, Claude, Groq, Mistral, DeepSeek or Qwen with your own API key — or point the browser at a server you run. That path goes directly rather than through Tor, because a streaming response through three relays is unusably slow. The app says so plainly, it is off by default, and switching back to on-device takes one tap.</p>
+  </section>
+
+  <section>
+    <h2>What it does not do</h2>
+    <table>
+      <tr><td>Collect your data</td><td>There is no backend. Nothing about your browsing reaches us, because there is nowhere for it to go.</td></tr>
+      <tr><td>Track you</td><td>No analytics, no advertising SDKs, no identifiers.</td></tr>
+      <tr><td>Require an account</td><td>Install it and connect. That is the whole setup.</td></tr>
+      <tr><td>Keep cookies on disk</td><td>Cookies, caches and site storage live in memory and go when the app closes — the way Tor Browser treats a session.</td></tr>
+      <tr><td>Send pages to a server</td><td>Summaries and answers are generated on your phone, unless you connect a cloud model yourself — and the app tells you when you have.</td></tr>
+      <tr><td>Pretend to be Tor Browser</td><td>An app cannot match its fingerprinting defences, and this one says so rather than implying otherwise.</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    <div class="foot-links">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:sivavimelrajhen@gmail.com">Contact</a>
+    </div>
+    Tor and the Onion Logo are registered trademarks of The Tor Project, Inc. This app is an
+    independent project, not produced by, endorsed by, or affiliated with The Tor Project, Inc.,
+    and has not been reviewed by them. It bundles an unmodified build of the Tor software.<br><br>
+    Built with Llama. Llama 3.2 is licensed under the Llama 3.2 Community License,
+    Copyright © Meta Platforms, Inc. All Rights Reserved.
+  </footer>
+
+</div>
+</body>
+</html>
